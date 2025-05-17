@@ -19,10 +19,10 @@ const FirstSection = () => {
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
           <h3 className="text-3xl md:text-5xl w-11/12 font-extrabold mb-6 text-yellow-400">
-            THE PEPE’S APP
+           The Flame'n Bun App
           </h3>
           <p className="text-xl leading-relaxed mb-4 text-white">
-            Order ahead all your favourites directly from your local Pepe’s store and be in with a chance of winning huge prizes and taking advantage of our exclusive app customer offers.
+            Order ahead all your favourites directly from your local Flame'n Bun store and be in with a chance of winning huge prizes and taking advantage of our exclusive app customer offers.
           </p>
           <p className="font-bold text-lg text-white mb-6">
             Download now on iOS or Android.

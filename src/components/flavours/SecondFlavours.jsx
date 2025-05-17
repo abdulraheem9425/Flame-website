@@ -2,11 +2,11 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const dips = [
-  { name: "PEPE’S PIRI PIRI MAYO", bgColor: "bg-yellow-400", textColor: "text-red-700" },
-  { name: "PEPE’S SWEET CHILLI", bgColor: "bg-red-700", textColor: "text-yellow-400" },
-  { name: "PEPE’S CHIMICHURRI MAYO", bgColor: "bg-green-400", textColor: "text-yellow-400" },
-  { name: "PEPE’S GARLIC MAYO", bgColor: "bg-yellow-100", textColor: "text-red-700" },
-  { name: "PEPE’S EXTRA HOT", bgColor: "bg-red-900", textColor: "text-red-400" },
+  { name: "FLAME’N BUN PIRI PIRI MAYO", bgColor: "bg-yellow-400", textColor: "text-red-700" },
+  { name: "FLAME’N BUN SWEET CHILLI", bgColor: "bg-red-700", textColor: "text-yellow-400" },
+  { name: "FLAME’N BUN CHIMICHURRI MAYO", bgColor: "bg-green-400", textColor: "text-yellow-400" },
+  { name: "FLAME’N BUN GARLIC MAYO", bgColor: "bg-yellow-100", textColor: "text-red-700" },
+  { name: "FLAME’N BUN EXTRA HOT", bgColor: "bg-red-900", textColor: "text-red-400" },
 ];
 
 const DipsComponent = () => {
@@ -21,7 +21,7 @@ const DipsComponent = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
       >
-        PEPE’S DIPS
+        FLAME’N BUN DIPS
         <span className="block w-20 h-1 bg-white mx-auto mt-3 rounded" />
       </motion.h2>
 
@@ -55,7 +55,7 @@ const DipsComponent = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
       >
-        Take your sides to a whole new level with Pepe's Dips
+        Take your sides to a whole new level with Flame’n Bun Dips
       </motion.p>
       <motion.p
         className="mt-2 text-base sm:text-lg"

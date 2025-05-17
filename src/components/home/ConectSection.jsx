@@ -10,7 +10,7 @@ import { HiArrowNarrowRight } from "react-icons/hi";
 
 const links = [
   {
-    label: "Find Your Local Pepe’s",
+    label: "Find Your Local Flame’n Bun",
     icon: <FaMapMarkerAlt className="text-lg" />,
     href: "#",
   },
@@ -30,7 +30,7 @@ const links = [
     href: "#",
   },
   {
-    label: "Download the Pepe’s App",
+    label: "Download the Flame’n Bun App",
     icon: <FaMobileAlt className="text-lg" />,
     href: "#",
   },

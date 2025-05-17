@@ -4,7 +4,7 @@ const HomeHero = () => {
   const [videoError, setVideoError] = useState(false);
 
   return (
-    <div className="relative text-white text-center px-4 py-60 space-y-12 overflow-hidden">
+    <div className="relative text-white text-center px-4 py-72 space-y-12 overflow-hidden">
       {/* Video Background */}
       {!videoError ? (
         <video
@@ -21,7 +21,7 @@ const HomeHero = () => {
         </video>
       ) : (
         <img
-          src="/public/assets/images/home/herosection.gif"
+          src="/assets/images/home/herosection.gif"
           alt="Fallback GIF"
           className="absolute top-0 left-0 w-full h-full object-cover -z-10"
         />
@@ -37,11 +37,9 @@ const HomeHero = () => {
       </div>
 
       {/* Description */}
-      <div className="max-w-3xl  md:relative top-36 mx-auto text-lg font-medium leading-relaxed flex flex-col flex-auto text-white ">
-        <h2 className="text-2xl md:text-2xl font-extrabold mb-2">
-          224 Locations Serving
-        </h2>
-        <h2 className="text-2xl md:text-xl font-extrabold uppercase mb-4">
+      <div className="max-w-3xl relative top-60  md:relative top-36 mx-auto text-lg font-medium leading-relaxed flex flex-col flex-auto text-white ">
+       
+        <h2 className="text-xl md:text-xl font-extrabold uppercase mb-4">
           Delicious Flame-Grilled Flame 'n Bun Chicken
         </h2>
         <p className="tracking-tighter">

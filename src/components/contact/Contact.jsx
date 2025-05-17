@@ -11,23 +11,23 @@ const contactDetails = [
     title: "Gift Card Support",
     content: (
       <>
-        <p>Email: <a href="mailto:orders@pepesgiftcard.co.uk" className="underline">orders@pepesgiftcard.co.uk</a></p>
-        <p>Phone: <a href="tel:01738444376">01738 444376</a></p>
+        <p>Email: <a href="mailto:orders@flamenbun.co.uk" className="underline">orders@flamenbun.co.uk</a></p>
+        <p>Phone: <a href="tel:+442034759298">+44 20 3475 9298</a></p>
       </>
     ),
   },
   {
     title: "App Queries",
     content: (
-      <p>Email: <a href="mailto:customerservices@pepes.co.uk" className="underline">customerservices@pepes.co.uk</a></p>
+      <p>Email: <a href="mailto:customerservices@flamenbun.co.uk" className="underline">customerservices@flamenbun.co.uk</a></p>
     ),
   },
   {
     title: "Franchising",
     content: (
       <>
-        <p>Email: <a href="mailto:franchising@pepes.co.uk" className="underline">franchising@pepes.co.uk</a></p>
-        <p>Phone: <a href="tel:+441923711854">+44 1923 711 854</a></p>
+        <p>Email: <a href="mailto:franchising@flamenbun.co.uk" className="underline">franchising@flamenbun.co.uk</a></p>
+        <p>Phone: <a href="tel:+442034759298">+44 20 3475 9298</a></p>
       </>
     ),
   },
@@ -35,9 +35,9 @@ const contactDetails = [
     title: "Head Office",
     content: (
       <>
-        <p><MapPin className="inline-block w-4 h-4 mr-1 text-white" /> Unit 3, Olds Close, Watford, WD18 9RU</p>
+        <p><MapPin className="inline-block w-4 h-4 mr-1 text-white" /> 14 Lambton Rd, Raynes Park, London SW20 0LR, United Kingdom</p>
         <p><Phone className="inline-block w-4 h-4 mr-1 text-white" /> <a href="tel:+441923711854">+44 1923 711 854</a></p>
-        <p><Mail className="inline-block w-4 h-4 mr-1 text-white" /> <a href="mailto:customerservices@pepes.co.uk">customerservices@pepes.co.uk</a></p>
+        <p><Mail className="inline-block w-4 h-4 mr-1 text-white" /> <a href="mailto:customerservices@flamenbun.co.uk">customerservices@flamenbun.co.uk</a></p>
       </>
     ),
   },
@@ -54,7 +54,6 @@ const ContactSection = () => {
         {contactDetails.map((item, i) => (
           <motion.div
             key={i}
-            className=""
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -63,7 +62,7 @@ const ContactSection = () => {
             <h3 className="text-2xl font-semibold text-yellow-500 mb-2 text-center">
               {item.title}
             </h3>
-            <div className="text-lg  leading-relaxed space-y-1 text-center">
+            <div className="text-lg leading-relaxed space-y-1 text-center">
               {item.content}
             </div>
           </motion.div>

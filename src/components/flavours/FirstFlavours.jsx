@@ -7,7 +7,7 @@ const OurFlavours = () => {
 
         {/* Styled Heading */}
         <h2 className="text-4xl sm:text-5xl font-extrabold mb-8 leading-snug tracking-wide">
-          <span className="italic text-yellow-400">Pepe’s </span>
+          <span className="italic text-yellow-400">Flame’n Bun </span>
           <span className="text-white font-black">PICKED A </span>
           <span className="italic text-yellow-400">Peck </span>
           <span className="text-white font-black">OF </span>

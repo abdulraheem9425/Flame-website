@@ -12,7 +12,7 @@ const FreshDipSection = () => {
             Fresh to the last dip
           </h2>
           <p className="text-2xl font-semibold">
-            The same attention to detail is taken when creating our fantastic dips. We don't 'buy in' our dips but make them fresh daily in-store, so that they complement our menu, adding to that unique taste across all our products.
+            The same attention to detail is taken when creating our fantastic dips. We don't 'buy in' our dips but make them fresh daily in-store, so that they complement our menu, adding to that unique taste across all Flame’n Bun products.
           </p>
         </div>
 
@@ -20,7 +20,7 @@ const FreshDipSection = () => {
         <div className="flex-1 flex justify-center md:justify-end">
           <img
             src="/assets/images/psp.png"
-            alt="Pepe's freshly made dips illustration"
+            alt="Flame’n Bun freshly made dips illustration"
             className="w-96 h-auto"
           />
         </div>

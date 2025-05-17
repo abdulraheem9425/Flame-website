@@ -2,22 +2,41 @@ import React, { useState } from "react";
 import { FaTiktok, FaFacebook, FaInstagram } from "react-icons/fa";
 import { Button } from "../ui/Button";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleJoin = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!email) {
       setError("Email is required.");
+      setSuccess("");
     } else if (!emailRegex.test(email)) {
       setError("Please enter a valid email.");
+      setSuccess("");
     } else {
-      alert(`Thank you for joining Flame 'n Bun, ${email}!`);
-      setEmail("");
       setError("");
+      setLoading(true);
+      axios
+        .post("http://localhost:5000/api/subscribe", { email })
+        .then((response) => {
+          setSuccess(response.data.message);
+          setEmail("");
+        })
+        .catch((err) => {
+          setError(
+            err.response?.data?.error || "Failed to subscribe. Try again."
+          );
+          setSuccess("");
+        })
+        .finally(() => {
+          setLoading(false);
+        });
     }
   };
 
@@ -48,9 +67,9 @@ const Footer = () => {
               <a href="#" className="hover:underline">
                 Jobs
               </a>
-          <Link to="/contact" className="hover:underline">
-  Contact Us
-</Link>
+              <Link to="/contact" className="hover:underline">
+                Contact Us
+              </Link>
             </div>
 
             <div className="mt-12 text-yellow-400 font-bold text-2xl text-center sm:text-left">
@@ -64,21 +83,29 @@ const Footer = () => {
                 onChange={(e) => {
                   setEmail(e.target.value);
                   setError("");
+                  setSuccess("");
                 }}
                 placeholder="Enter your email address"
                 className="rounded-none sm:w-64 px-4 py-2 text-black text-sm w-full"
+                disabled={loading}
               />
               <Button
                 onClick={handleJoin}
                 className="rounded-none bg-red-600 hover:bg-red-700 text-yellow-400 h-10 w-full sm:w-auto"
+                disabled={loading}
               >
-                Join
+                {loading ? "Joining..." : "Join"}
               </Button>
             </div>
 
             {error && (
               <p className="text-sm text-yellow-200 mt-1 text-center sm:text-left">
                 {error}
+              </p>
+            )}
+            {success && (
+              <p className="text-sm text-green-200 mt-1 text-center sm:text-left">
+                {success}
               </p>
             )}
 

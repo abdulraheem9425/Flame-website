@@ -1,89 +1,163 @@
 import React from "react";
 
-const familyDeals = [
+const foodItems = [
   {
     id: 1,
-    title: "FLAMELY 01",
-    details: ["1 Whole Chicken", "6 Wings", "2 Regular Sides", "1.5 LTR Drink"],
-    price: "£19.99",
+    title: "Flaming Smash",
+    image: "/assets/images/menu/burger.jpg",
+    description: "Beef patty, cheddar cheese, gherkins, lettuce, mayo on a brioche bun.",
+    price: 8.99,
   },
   {
     id: 2,
-    title: "FLAMELY 02",
-    details: ["2 Whole Chicken", "6 Wings", "2 Regular Sides", "1.5 LTR Drink"],
-    price: "£32.99",
+    title: "The Moo Monster",
+    image: "/assets/images/menu/img10.avif",
+    description: "Double beef patty, lettuce, mayo, cheese, jalepenos, gherkins on a bun.",
+    price: 11.99,
   },
   {
     id: 3,
-    title: "FLAMELY 03",
-    details: ["4 Flame Burgers", "6 Wings", "2 Regular Sides", "1.5 LTR Drink"],
-    price: "£32.99",
+    title: "Quarter Chicken Combo",
+    image: "/assets/images/menu/pizza.jpg",
+    description: "Tender grilled quarter chicken served with crispy fries and a refreshing drink.",
+    price: 9.99,
   },
   {
     id: 4,
-    title: "FLAMELY 04",
-    details: ["20 Wings", "2 Regular Sides", "1.5 LTR Drink"],
-    price: "£17.99",
+    title: "Tikka Flame",
+    image: "/assets/images/menu/img4.jpg",
+    description: "Chicken tikka grilled, in a wrap with hot sauce mayo and lettuce.",
+    price: 6.99,
+  },
+  {
+    id: 5,
+    title: "Peri Peri Flame",
+    image: "/assets/images/menu/img5.jpg",
+    description: "Grilled chicken flavour of your choice, served in a wrap with lettuce and mayo.",
+    price: 6.99,
+  },
+  {
+    id: 6,
+    title: "Classic Loaded Fries",
+    image: "/assets/images/menu/img6.jpg",
+    description: "Crispy fries loaded with flame special sauce, jalenpenos, cheese, spring onions.",
+    price: 6.25,
+  },
+  {
+    id: 7,
+    title: "The Chicken Nugget Meal",
+    image: "/assets/images/menu/img7.jpg",
+    description: "Chicken Nuggets, fries and a fruit shoot.",
+    price: 6.99,
+  },
+  {
+    id: 8,
+    title: "Chicken Popcorn Meal",
+    image: "/assets/images/menu/img8.webp",
+    description: "Popcorn chicken, chips and a fruit shoot.",
+    price: 6.99,
+  },
+  {
+    id: 9,
+    title: "Peri Peri Chicken",
+    image: "/assets/images/menu/img9.jpg",
+    description: "Spicy peri peri chicken grilled to perfection.",
+    price: 11.49,
+  },
+  {
+    id: 10,
+    title: "Half Flame Chicken",
+    image: "/assets/images/menu/img11.jpg",
+    description: "Half Chicken, flame grilled and coated in your choice of flavouring.",
+    price: 10.99,
+  },
+  {
+    id: 11,
+    title: "Chicken Wings",
+    image: "/assets/images/menu/img3.jpg",
+    description: "Six flame grilled chicken wings and coated in your choice of flavouring.",
+    price: 6.99,
+  },
+  {
+    id: 12,
+    title: "Big Flame",
+    image: "/assets/images/menu/img12.jpg",
+    description: "Two chicken fillets, mayo, lettuce on a bap.",
+    price: 9.99,
   },
 ];
 
-const sides = [
-  { name: "Salad", price: "£3.99" },
-  { name: "Jalapeño Bites", price: "£3.99" },
-  { name: "Spicy Rice", price: "£2.99" },
-  { name: "Regular Fries", price: "£1.99" },
-  { name: "Large Fries", price: "£2.99" },
-  { name: "Flame Loaded Fries", price: "£5.99" },
-  { name: "Classic Loaded Fries", price: "£4.99" },
-  { name: "Mozzarella Sticks", price: "£3.99" },
-];
-
-const MenuCard = () => {
+function Menu() {
   return (
-    <section className="bg-[#7a0000] text-white py-16 px-6 font-bold">
-      <div className="max-w-6xl mx-auto text-center">
-        {/* Section Title */}
-        <h2 className="text-4xl font-extrabold text-yellow-400 mb-12 drop-shadow-lg tracking-wide">
-          FAMILY MEAL DEAL
-        </h2>
+    <div className="  min-h-screen bg-gradient-to-b from-red-700  pb-32 to-red-800 p-3">
+      <h1 className="text-5xl font-extrabold mb-14 text-center text-yellow-400 drop-shadow-lg tracking-wider">
+        Our Menu
+      </h1>
 
-        {/* Family Deals Grid */}
-        <div className="grid sm:grid-cols-2 gap-8">
-          {familyDeals.map((deal) => (
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 rounded-xl overflow-hidden border border-red-900">
+        {foodItems.map((item, idx) => {
+          const isTopLeft = idx === 0;
+          const isTopRightLg = idx === 2;
+          const isTopRightSm = idx === 1;
+          const isBottomLeftSm = idx === foodItems.length - 2;
+          const isBottomRight = idx === foodItems.length - 1;
+
+          return (
             <div
-              key={deal.id}
-              className="relative bg-[#8b0000] border-2 border-yellow-400 p-6 rounded-xl shadow-lg hover:scale-[1.02] transition-transform duration-300"
+              key={item.id}
+              className={`relative group cursor-pointer overflow-hidden border-b border-r border-red-900
+                ${isTopLeft ? "sm:rounded-tl-xl" : ""}
+                ${isTopRightSm ? "sm:rounded-tr-xl lg:rounded-tr-none" : ""}
+                ${isTopRightLg ? "lg:rounded-tr-xl" : ""}
+                ${isBottomLeftSm ? "sm:rounded-bl-xl lg:rounded-bl-none" : ""}
+                ${isBottomRight ? "rounded-br-xl" : ""}
+                shadow-md hover:shadow-2xl transition-shadow duration-400 min-h-[320px] sm:min-h-[400px]`}
             >
-              <h3 className="text-2xl text-yellow-300 mb-3">{deal.title}</h3>
-              <ul className="text-sm text-white/90 space-y-1 list-disc list-inside">
-                {deal.details.map((item, idx) => (
-                  <li key={idx}>{item}</li>
-                ))}
-              </ul>
-              <div className="absolute top-4 right-4 bg-yellow-400 text-red-900 font-semibold px-5 py-1.5 text-base rounded-full shadow-md">
-                {deal.price}
+              {/* Background Image */}
+              <img
+                src={item.image}
+                alt={item.title}
+                className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                loading="lazy"
+              />
+
+              {/* Dark overlay on full card */}
+              <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-50 transition duration-500"></div>
+
+              {/* Bottom half overlay on hover */}
+              <div className="absolute bottom-0 left-0 w-full h-1/2 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition duration-500"></div>
+
+              {/* Content */}
+              <div className="relative p-8 flex flex-col justify-between h-full text-white">
+                <h2 className="text-3xl font-extrabold mb-3 drop-shadow-lg tracking-tight">
+                  {item.title}
+                </h2>
+
+                {/* Hover info panel */}
+                <div className="opacity-0 translate-y-12 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-in-out flex flex-col flex-grow justify-center">
+                  <p className="mb-8 text-base leading-relaxed drop-shadow-md">
+                    {item.description}
+                  </p>
+                  <div className="flex justify-center">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        alert(`Added ${item.title} to cart!`);
+                      }}
+                      aria-label={`Add ${item.title} to cart`}
+                      className="bg-gradient-to-r from-red-700 to-red-900 text-white font-semibold px-8 py-3 rounded-full shadow-lg hover:scale-105 hover:from-red-600 hover:to-red-800 transition-transform duration-300"
+                    >
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
-          ))}
-        </div>
-
-        {/* Sides Section */}
-        <h3 className="text-3xl mt-16 mb-4 text-yellow-400 underline underline-offset-4">SIDES</h3>
-
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-6">
-          {sides.map((side, idx) => (
-            <div
-              key={idx}
-              className="flex justify-between items-center px-4 py-3 bg-[#990000] rounded-lg shadow-sm hover:bg-[#aa0000] transition duration-300"
-            >
-              <span className="text-base">{side.name}</span>
-              <span className="text-yellow-300 font-semibold">{side.price}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+          );
+        })}
+      </section>
+    </div>
   );
-};
+}
 
-export default MenuCard;
+export default Menu;

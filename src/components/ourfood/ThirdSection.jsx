@@ -23,7 +23,7 @@ const FreshFoodSection = () => {
           </h2>
           <p className="text-lg md:text-2xl font-medium leading-relaxed">
             The care that is taken in the preparation and cooking of our food is mirrored in the sourcing of our ingredients.
-            Pepe's is fresh and flame-grilled with our famous range of Piri Piri flavours. We love our menu and hope you do too.
+            Flame’n Bun is fresh and flame-grilled with our famous range of Piri Piri flavours. We love our menu and hope you do too.
           </p>
         </div>
 

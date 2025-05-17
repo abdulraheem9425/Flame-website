@@ -13,7 +13,7 @@ const HeroSection = () => {
   </h2>
 
   <p className="text-white mt-10 text-base sm:text-lg font-semibold max-w-3xl mx-auto">
-    Pepe's legendary piri piri chicken, marinated in our famous 6 tasty flavours and flame-grilled to perfection while you wait.
+    Flame`n` legendary piri piri chicken, marinated in our famous 6 tasty flavours and flame-grilled to perfection while you wait.
   </p>
 </div>
 

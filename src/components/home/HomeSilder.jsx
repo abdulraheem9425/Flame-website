@@ -39,7 +39,7 @@ const HomeSlider = () => {
   return (
     <div className="relative w-full overflow-hidden bg-red-700">
       {/* Image Container */}
-      <div className="w-full h-[250px] sm:h-[400px] md:h-[500px] lg:h-[650px]">
+      <div className="w-fit h-[350px] sm:h-[600px] md:h-[500px] lg:h-[650px]">
         <img
           src={slides[current].image}
           alt={slides[current].alt}

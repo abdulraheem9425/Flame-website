@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { Search, Clock } from "lucide-react";
 import L from "leaflet";
@@ -7,33 +7,29 @@ import L from "leaflet";
 // Store data
 const stores = [
   {
-    name: "Pepe's",
-    address: "100-104 Lothian Road, Edinburgh, EH3 9BE",
+    name: "Flame'n Bun",
+    address: "14 Lambton Rd, Raynes Park, London SW20 0LR, United Kingdom",
     opensAt: "11:00",
-    lat: 55.946962,
-    lng: -3.205546,
-  },
-  {
-    name: "Pepe's",
-    address: "13a Drum Street, Edinburgh, EH17 8QQ",
-    opensAt: "11:00",
-    lat: 55.912151,
-    lng: -3.134189,
-  },
-  {
-    name: "Pepe's",
-    address: "24 Union Street, Aldershot, GU11 1DA",
-    opensAt: "12:00",
-    lat: 51.248333,
-    lng: -0.763889,
+    lat: 51.4215,
+    lng: -0.2101,
   },
 ];
+
+// Helper component to change map view when center changes
+function ChangeView({ center, zoom }) {
+  const map = useMap();
+  map.setView(center, zoom);
+  return null;
+}
 
 const StoreLocatorMap = () => {
   const [search, setSearch] = useState("");
   const [showOpenOnly, setShowOpenOnly] = useState(false);
 
-  // Function to check if the store is open
+  // Map center and zoom state
+  const [mapCenter, setMapCenter] = useState([51.4221, -0.2104]);
+  const [mapZoom, setMapZoom] = useState(15);
+
   const isStoreOpen = (store) => {
     const currentTime = new Date();
     const [hours, minutes] = store.opensAt.split(":").map(Number);
@@ -42,7 +38,6 @@ const StoreLocatorMap = () => {
     return currentTime >= storeOpeningTime;
   };
 
-  // Filter stores based on search and open status
   const filteredStores = stores.filter((store) => {
     const isSearchMatch =
       store.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -51,13 +46,18 @@ const StoreLocatorMap = () => {
     return isSearchMatch && isOpenMatch;
   });
 
-  // Set custom icon for markers (fixes issue with Leaflet default icon)
   const markerIcon = new L.Icon({
-    iconUrl: "/path-to-your-icon.png", // Set the path to your custom marker image
-    iconSize: [25, 25], // Size of the marker
-    iconAnchor: [12, 24], // Anchor point of the icon
-    popupAnchor: [0, -24], // Position of the popup
+    iconUrl: "/path-to-your-icon.png",
+    iconSize: [25, 25],
+    iconAnchor: [12, 24],
+    popupAnchor: [0, -24],
   });
+
+  // When a store is clicked in sidebar, update map center and zoom
+  const handleStoreClick = (store) => {
+    setMapCenter([store.lat, store.lng]);
+    setMapZoom(17); // Zoom in closer to location
+  };
 
   return (
     <div className="flex h-screen w-full">
@@ -86,7 +86,8 @@ const StoreLocatorMap = () => {
         {filteredStores.map((store, index) => (
           <div
             key={index}
-            className="border p-4 rounded-md shadow-sm mb-4 flex justify-between items-start"
+            onClick={() => handleStoreClick(store)}  // Add click handler here
+            className="border p-4 rounded-md shadow-sm mb-4 flex justify-between items-start cursor-pointer hover:bg-gray-100"
           >
             <div>
               <h2 className="font-bold">{store.name}</h2>
@@ -96,7 +97,7 @@ const StoreLocatorMap = () => {
               </p>
             </div>
             <img
-              src="/assets/images/home/logo.png" 
+              src="/assets/images/home/logo.png"
               alt="Logo"
               className="w-10 h-10"
             />
@@ -107,10 +108,12 @@ const StoreLocatorMap = () => {
       {/* Map */}
       <div className="flex-1 relative z-0">
         <MapContainer
-          center={[55.946962, -3.205546]}
-          zoom={6}
+          center={mapCenter}
+          zoom={mapZoom}
           className="h-full w-full z-0"
+          scrollWheelZoom={false}
         >
+          <ChangeView center={mapCenter} zoom={mapZoom} />
           <TileLayer
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

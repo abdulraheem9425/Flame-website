@@ -29,10 +29,10 @@ const BottledSauces = () => {
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
           <h3 className="text-3xl md:text-4xl font-extrabold mb-6 text-red-800">
-            Pepe's in a bottle!
+            Flame’n Bun in a bottle!
           </h3>
           <p className="text-lg leading-relaxed mb-4 text-red-800">
-            Secret blends of spices is not our thing, here at Pepe’s we’re all about sharing. That's why we've taken our six signature piri piri flavours and put them in a bottle so you can make every meal <span className="font-bold">Pepe'licious</span>.
+            Secret blends of spices is not our thing, here at Flame’n Bun we’re all about sharing. That's why we've taken our six signature piri piri flavours and put them in a bottle so you can make every meal <span className="font-bold">Flame’n Bun-licious</span>.
           </p>
           <p className="font-bold text-lg text-red-800">
             Available to buy in store & online now!
@@ -49,7 +49,7 @@ const BottledSauces = () => {
         >
           <img
             src="/assets/images/bottle.png"
-            alt="Pepe's Bottled Sauces in various flavours"
+            alt="Flame’n Bun Bottled Sauces in various flavours"
             className="max-w-lg h-auto object-contain"
           />
         </motion.div>

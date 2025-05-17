@@ -7,7 +7,7 @@ const sliderData = [
   { image: "/assets/images/home/food1.jpg", link: "/menu" },
   { image: "/assets/images/home/food2.jpg", link: "/menu" },
   { image: "/assets/images/home/food3.jpg", link: "/menu" },
-  { image: "/public/assets/images/home/food7.jpg", link: "/menu" },
+  { image: "/assets/images/home/food7.jpg", link: "/menu" },
   { image: "/assets/images/home/food6.jpg", link: "/menu" },
   { image: "/assets/images/home/food.jpg", link: "/menu" },
   { image: "/assets/images/home/food3.jpg", link: "/menu" },
