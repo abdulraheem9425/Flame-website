@@ -21,7 +21,7 @@ const FreshDipSection = () => {
           <img
             src="/assets/images/psp.png"
             alt="Flame’n Bun freshly made dips illustration"
-            className="w-96 h-auto"
+            className="w-96 max-h-min md:w-80 md:h-96 "
           />
         </div>
       </div>
