@@ -125,7 +125,7 @@ function Menu() {
               <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-50 transition duration-500"></div>
 
               {/* Bottom half overlay on hover */}
-              <div className="absolute bottom-0 left-0 w-full h-1/2 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition duration-500"></div>
+              <div className="absolute bottom-0 left-0 w-full h-1/2 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition duration-500"></div>
 
               {/* Content */}
               <div className="relative p-8 flex flex-col justify-between h-full text-white">
