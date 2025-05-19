@@ -1,25 +1,20 @@
-import React from 'react'
+import React from "react";
 
 const HeroSection = () => {
   return (
-    <>
-    
-    
-    <div className="bg-[#851212] py-28 text-center">
-  <h2 className="text-4xl sm:text-5xl font-extrabold uppercase text-yellow-300 relative inline-block">
-    <span className=" pb-1 ">
-      FLAME N BUN
-    </span>
-  </h2>
+    <div className="bg-gradient-to-br from-red-800 via-[#851212] to-red-900 py-60 px-4 text-center">
+      <h2 className="text-5xl sm:text-6xl font-pacifico italic text-yellow-300 drop-shadow-lg relative inline-block animate-fadeIn">
+        <span className="border-b-4 border-yellow-300 pb-2">
+          FLAME N BUN
+        </span>
+      </h2>
 
-  <p className="text-white mt-10 text-base sm:text-lg font-semibold max-w-3xl mx-auto">
-    Flame`n` legendary piri piri chicken, marinated in our famous 6 tasty flavours and flame-grilled to perfection while you wait.
-  </p>
-</div>
+      <p className="text-white mt-8 text-lg sm:text-xl max-w-2xl mx-auto font-medium tracking-wide leading-relaxed animate-fadeIn delay-200">
+        Flame’n’ legendary piri piri chicken, marinated in our iconic 6 tasty
+        flavours, flame-grilled to sizzling perfection — while you wait.
+      </p>
+    </div>
+  );
+};
 
-    
-    </>
-  )
-}
-
-export default HeroSection
+export default HeroSection;

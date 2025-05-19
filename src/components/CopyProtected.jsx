@@ -4,7 +4,6 @@ export default function CopyProtected({ children }) {
   useEffect(() => {
     const disableCopy = (e) => e.preventDefault();
 
-    // Sirf copy event ko disable karo
     document.addEventListener("copy", disableCopy);
 
     return () => {

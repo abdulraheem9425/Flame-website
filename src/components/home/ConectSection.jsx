@@ -11,64 +11,72 @@ import { HiArrowNarrowRight } from "react-icons/hi";
 const links = [
   {
     label: "Find Your Local Flame’n Bun",
-    icon: <FaMapMarkerAlt className="text-lg" />,
+    icon: <FaMapMarkerAlt />,
     href: "#",
   },
   {
     label: "Follow us on TikTok",
-    icon: <FaTiktok className="text-lg" />,
+    icon: <FaTiktok />,
     href: "#",
   },
   {
     label: "Like us on Facebook",
-    icon: <FaFacebookF className="text-lg" />,
+    icon: <FaFacebookF />,
     href: "#",
   },
   {
     label: "Follow us on Instagram",
-    icon: <FaInstagram className="text-lg" />,
+    icon: <FaInstagram />,
     href: "#",
   },
   {
     label: "Download the Flame’n Bun App",
-    icon: <FaMobileAlt className="text-lg" />,
+    icon: <FaMobileAlt />,
     href: "#",
   },
 ];
 
 const ConnectSection = () => {
   return (
-    <div className="bg-red-700 text-white py-14 px-6 min-h-[60vh] flex items-center ">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-center items-center md:items-start gap-12 text-center md:text-left">
-        {/* Heading */}
-        <div className="md:w-1/3 ">
-          <h2 className="text-5xl font-extrabold leading-tight">LET’S</h2>
-          <h2 className="text-5xl italic text-yellow-300 font-semibold leading-tight mt-2">
+    <section className="relative bg-gradient-to-br from-red-800 via-red-700 to-red-600 text-white py-24 px-6 overflow-hidden">
+      <div className="absolute inset-0 bg-[url('/path/to/texture.svg')] bg-cover bg-center opacity-10 pointer-events-none" />
+      <div className="relative z-10 max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-16">
+        {/* Text Block */}
+        <div className="md:w-1/3 space-y-4 text-center md:text-left">
+          <h2 className="text-6xl font-extrabold leading-tight tracking-tight">
+            LET’S
+          </h2>
+          <h2 className="text-6xl italic font-semibold text-yellow-300">
             Connect
           </h2>
+          <p className="text-lg text-white/80 mt-2">
+            Whether online or in-store, we’re just a tap away.
+          </p>
         </div>
 
-        {/* Links */}
-        <div className="md:w-2/3 space-y-4 w-full">
+        {/* Links Block */}
+        <div className="md:w-2/3 w-full space-y-5">
           {links.map((item, index) => (
             <a
               key={index}
               href={item.href}
               aria-label={item.label}
-              className="flex items-center justify-between border-b border-dotted border-white pb-3 group transition-all duration-200 hover:bg-white/10 rounded-md px-2"
+              className="group flex items-center justify-between px-5 py-4 rounded-2xl backdrop-blur-md bg-white/10 hover:bg-white/20 transition-all duration-300 shadow-lg"
             >
-              <div className="flex items-center gap-3">
-                <span className="text-xl">{item.icon}</span>
-                <span className="text-base md:text-lg group-hover:text-yellow-300">
+              <div className="flex items-center gap-4">
+                <div className="p-3 bg-yellow-300/20 text-yellow-300 rounded-full text-xl group-hover:scale-110 transition-transform">
+                  {item.icon}
+                </div>
+                <span className="text-base md:text-lg font-medium group-hover:text-yellow-200">
                   {item.label}
                 </span>
               </div>
-              <HiArrowNarrowRight className="text-lg group-hover:text-yellow-300 transition" />
+              <HiArrowNarrowRight className="text-xl text-white group-hover:text-yellow-300 transition-transform duration-300 group-hover:translate-x-1" />
             </a>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -89,12 +89,12 @@ const foodItems = [
 
 function Menu() {
   return (
-    <div className="  min-h-screen bg-gradient-to-b from-red-700  pb-32 to-red-800 p-3">
-      <h1 className="text-5xl font-extrabold mb-14 text-center text-yellow-400 drop-shadow-lg tracking-wider">
+    <div className="min-h-screen bg-gradient-to-b from-red-900 via-red-700 to-red-900 p-6 pb-36">
+      <h1 className="text-6xl font-extrabold mb-20 text-center text-yellow-400 drop-shadow-[0_4px_12px_rgba(255,215,0,0.85)] tracking-widest select-none">
         Our Menu
       </h1>
 
-      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 rounded-xl overflow-hidden border border-red-900">
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto rounded-xl border border-red-900 shadow-xl overflow-hidden">
         {foodItems.map((item, idx) => {
           const isTopLeft = idx === 0;
           const isTopRightLg = idx === 2;
@@ -103,39 +103,47 @@ function Menu() {
           const isBottomRight = idx === foodItems.length - 1;
 
           return (
-            <div
+            <article
               key={item.id}
-              className={`relative group cursor-pointer overflow-hidden border-b border-r border-red-900
+              tabIndex={0}
+              className={`
+                relative group cursor-pointer overflow-hidden border-b border-r border-red-900
+                bg-gradient-to-br from-red-800 via-red-700 to-red-900
+                shadow-lg hover:shadow-yellow-500/70 rounded-none
                 ${isTopLeft ? "sm:rounded-tl-xl" : ""}
                 ${isTopRightSm ? "sm:rounded-tr-xl lg:rounded-tr-none" : ""}
                 ${isTopRightLg ? "lg:rounded-tr-xl" : ""}
                 ${isBottomLeftSm ? "sm:rounded-bl-xl lg:rounded-bl-none" : ""}
                 ${isBottomRight ? "rounded-br-xl" : ""}
-                shadow-md hover:shadow-2xl transition-shadow duration-400 min-h-[320px] sm:min-h-[400px]`}
+                transition-shadow duration-500 focus:outline-none focus:ring-4 focus:ring-yellow-400 focus:ring-offset-2
+                min-h-[360px] sm:min-h-[420px]
+              `}
+              aria-label={`${item.title}: ${item.description}, priced at $${item.price.toFixed(2)}`}
             >
               {/* Background Image */}
               <img
                 src={item.image}
                 alt={item.title}
-                className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110 group-focus:scale-105 brightness-90 group-hover:brightness-110"
                 loading="lazy"
+                onError={(e) => (e.target.src = "/assets/images/fallback.jpg")}
               />
 
-              {/* Dark overlay on full card */}
-              <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-50 transition duration-500"></div>
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-60 transition duration-500"></div>
 
-              {/* Bottom half overlay on hover */}
-              <div className="absolute bottom-0 left-0 w-full h-1/2 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition duration-500"></div>
+              {/* Bottom gradient on hover */}
+              <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
 
               {/* Content */}
               <div className="relative p-8 flex flex-col justify-between h-full text-white">
-                <h2 className="text-3xl font-extrabold mb-3 drop-shadow-lg tracking-tight">
+                <h2 className="text-3xl font-extrabold mb-3 drop-shadow-lg tracking-tight select-none">
                   {item.title}
                 </h2>
 
                 {/* Hover info panel */}
                 <div className="opacity-0 translate-y-12 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-in-out flex flex-col flex-grow justify-center">
-                  <p className="mb-8 text-base leading-relaxed drop-shadow-md">
+                  <p className="mb-8 text-base leading-relaxed drop-shadow-md select-none">
                     {item.description}
                   </p>
                   <div className="flex justify-center">
@@ -145,14 +153,14 @@ function Menu() {
                         alert(`Added ${item.title} to cart!`);
                       }}
                       aria-label={`Add ${item.title} to cart`}
-                      className="bg-gradient-to-r from-red-700 to-red-900 text-white font-semibold px-8 py-3 rounded-full shadow-lg hover:scale-105 hover:from-red-600 hover:to-red-800 transition-transform duration-300"
+                      className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-red-900 font-bold px-10 py-3 rounded-full shadow-lg hover:scale-110 hover:from-yellow-300 hover:to-yellow-400 transition-transform duration-300 focus:outline-none focus:ring-4 focus:ring-yellow-300"
                     >
                       Add to Cart
                     </button>
                   </div>
                 </div>
               </div>
-            </div>
+            </article>
           );
         })}
       </section>

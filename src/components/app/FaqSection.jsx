@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./FaqSection.css"; // Enhanced CSS
+import { motion, AnimatePresence } from "framer-motion";
 
 const faqs = [
   {
@@ -91,9 +91,8 @@ const faqs = [
     question: "How does the Flame’n Rewards system work?",
     answer:
       "You earn points with every order! Redeem them for free sides, drinks or burgers — yum!",
-  }
+  },
 ];
-
 
 const FaqSection = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -103,21 +102,43 @@ const FaqSection = () => {
   };
 
   return (
-    <section className="faq-section">
-      <div className="faq-container">
-        <h1 className="faq-header">FAQ’S</h1>
+    <section className="bg-[#d0021b] text-white px-4 py-16 font-sans">
+      <div className="max-w-3xl mx-auto">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-yellow-300 mb-10 uppercase text-center">
+          FAQ’s
+        </h2>
+
         {faqs.map((faq, index) => (
-          <div key={index} className={`faq-item ${openIndex === index ? "active" : ""}`}>
-            <div className="faq-question" onClick={() => toggleFAQ(index)}>
-              <span>{faq.question}</span>
-              <span className="faq-icon">{openIndex === index ? "−" : "+"}</span>
-            </div>
-            <div
-              className="faq-answer"
-              style={{ maxHeight: openIndex === index ? "200px" : "0px" }}
+          <div
+            key={index}
+            className={`border-t border-white/30 py-4 ${
+              openIndex === index ? "bg-white/5" : ""
+            }`}
+          >
+            <button
+              onClick={() => toggleFAQ(index)}
+              className="w-full flex justify-between items-center text-left font-semibold text-lg focus:outline-none"
+              aria-expanded={openIndex === index}
+              aria-controls={`faq-${index}`}
             >
-              <p>{faq.answer}</p>
-            </div>
+              <span>{faq.question}</span>
+              <span className="text-xl">{openIndex === index ? "−" : "+"}</span>
+            </button>
+
+            <AnimatePresence>
+              {openIndex === index && (
+                <motion.div
+                  id={`faq-${index}`}
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="overflow-hidden text-sm text-white mt-3 leading-relaxed pr-1"
+                >
+                  {faq.answer}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         ))}
       </div>

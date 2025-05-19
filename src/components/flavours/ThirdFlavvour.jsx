@@ -3,63 +3,66 @@ import { motion } from "framer-motion";
 
 const BottledSauces = () => {
   return (
-    <section className="relative bg-yellow-400 bg-gradient-to-br from-yellow-300 via-yellow-400 to-yellow-300 py-20 px-6 md:px-16 text-red-700 overflow-hidden">
-      {/* Watermark background */}
+    <section className="relative bg-gradient-to-br from-yellow-300 via-yellow-400 to-yellow-300 py-20 px-6 md:px-20 text-red-800 overflow-hidden rounded-lg shadow-lg">
+      {/* Subtle Pattern Background */}
       <div className="absolute inset-0 opacity-10 bg-[url('/assets/images/pattern.png')] bg-repeat z-0"></div>
 
       {/* Heading */}
       <motion.h2
-        className="relative z-10 text-center text-5xl font-extrabold uppercase tracking-wide mb-16 text-red-800"
+        className="relative z-10 text-center text-5xl font-extrabold uppercase tracking-widest mb-16 text-red-900 drop-shadow-md"
         initial={{ opacity: 0, y: -40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
       >
         Bottled Sauces
-        <span className="block w-24 h-1 bg-red-800 mx-auto mt-4 rounded"></span>
+        <span className="block w-28 h-1 bg-red-900 mx-auto mt-5 rounded-full shadow" />
       </motion.h2>
 
-      <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-14">
+      <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-16">
         {/* Text Content */}
         <motion.div
           className="md:w-1/2 text-center md:text-left"
-          initial={{ x: -100, opacity: 0 }}
+          initial={{ x: -80, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h3 className="text-3xl md:text-4xl font-extrabold mb-6 text-red-800">
+          <h3 className="text-3xl md:text-4xl font-extrabold mb-6 text-red-900 tracking-tight">
             Flame’n Bun in a bottle!
           </h3>
-          <p className="text-lg leading-relaxed mb-4 text-red-800">
-            Secret blends of spices is not our thing, here at Flame’n Bun we’re all about sharing. That's why we've taken our six signature piri piri flavours and put them in a bottle so you can make every meal <span className="font-bold">Flame’n Bun-licious</span>.
+          <p className="text-lg leading-relaxed mb-6 text-red-900 max-w-xl mx-auto md:mx-0">
+            We believe in bold flavours that speak for themselves. Our six signature piri piri sauces are now bottled so you can take Flame’n Bun wherever you go and make every meal <span className="font-extrabold underline decoration-yellow-400 decoration-4">absolutely unforgettable</span>.
           </p>
-          <p className="font-bold text-lg text-red-800">
-            Available to buy in store & online now!
+          <p className="font-semibold text-lg text-red-900 max-w-xl mx-auto md:mx-0">
+            Available to buy in-store & online now!
           </p>
         </motion.div>
 
         {/* Sauce Bottles Image */}
         <motion.div
-          className="w-full md:w-1/31 flex justify-center md:justify-end"
-          initial={{ x: 100, opacity: 0 }}
+          className="w-full md:w-1/2 flex justify-center md:justify-end"
+          initial={{ x: 80, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <img
             src="/assets/images/bottle.png"
             alt="Flame’n Bun Bottled Sauces in various flavours"
-            className="max-w-lg h-auto object-contain"
+            className="max-w-md sm:max-w-lg h-auto object-contain rounded-lg  hover:scale-105 transition-transform duration-300"
           />
         </motion.div>
       </div>
 
-      {/* Scroll button */}
-      <div className="absolute bottom-6 right-6 z-10">
-        <button className="bg-orange-900 rounded-xl p-3 shadow-md">
+      {/* Scroll Button */}
+      <div className="absolute bottom-8 right-8 z-20">
+        <button
+          aria-label="Scroll down"
+          className="bg-red-900 rounded-xl p-3 shadow-lg hover:bg-red-800 transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-red-600"
+        >
           <svg
-            className="w-5 h-5 text-white"
+            className="w-6 h-6 text-yellow-400"
             fill="none"
             stroke="currentColor"
             strokeWidth="2"

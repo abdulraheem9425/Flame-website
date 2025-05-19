@@ -9,15 +9,28 @@ const sliderData = [
   { image: "/assets/images/home/food3.jpg", link: "/menu" },
   { image: "/assets/images/home/food7.jpg", link: "/menu" },
   { image: "/assets/images/home/food6.jpg", link: "/menu" },
-  { image: "/assets/images/home/food.jpg", link: "/menu" },
-  { image: "/assets/images/home/food3.jpg", link: "/menu" },
-  { image: "/assets/images/home/food7.jpg", link: "/menu" },
 ];
 
 const HomeSliderCard = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const itemsPerView = 3;
+  const [itemsPerView, setItemsPerView] = useState(3);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const updateItemsPerView = () => {
+      if (window.innerWidth < 640) {
+        setItemsPerView(1);
+      } else if (window.innerWidth < 1024) {
+        setItemsPerView(2);
+      } else {
+        setItemsPerView(3);
+      }
+    };
+
+    updateItemsPerView();
+    window.addEventListener("resize", updateItemsPerView);
+    return () => window.removeEventListener("resize", updateItemsPerView);
+  }, []);
 
   const maxIndex = Math.ceil(sliderData.length / itemsPerView) - 1;
 
@@ -42,44 +55,44 @@ const HomeSliderCard = () => {
   };
 
   const handleImageError = (e) => {
-    e.target.src = "/assets/images/fallback.jpg"; // Replace with your fallback image
+    e.target.src = "/assets/images/fallback.jpg";
   };
 
   return (
-    <div className="md:w-full h-[650px] bg-red-700 text-white relative overflow-hidden">
+    <div className="w-full bg-gradient-to-r from-red-700 via-red-800 to-red-900 text-white relative overflow-hidden py-12">
       {/* Heading */}
- <div className="w-full text-center py-8 px-4">
-  <h2 className="text-4xl sm:text-5xl font-pacifico italic text-white relative inline-block">
-    Fresh, 
-    <span className="text-yellow-300 relative z-10">Flamingly-good!</span>
-    <span className="absolute bottom-0 left-0 w-full h-[3px] bg-yellow-300 transform translate-y-1/2"></span>
-  </h2>
-</div>
+      <div className="text-center mb-8 px-4">
+        <h2 className="text-3xl sm:text-4xl font-pacifico italic text-white">
+          Fresh,{" "}
+          <span className="text-yellow-300 relative z-10 inline-block">
+            Flamingly-good!
+            <span className="block h-[3px] bg-yellow-300 absolute bottom-0 left-0 w-full" />
+          </span>
+        </h2>
+      </div>
 
-
-      {/* Image Slider */}
-      <div className="h-[calc(100%-150px)] flex items-center justify-center relative px-4">
+      {/* Slider */}
+      <div className="relative flex items-center justify-center px-4">
         {/* Left Arrow */}
         <button
           onClick={prev}
-          className="absolute left-2 sm:left-6 top-1/2 transform -translate-y-1/2 text-white p-2 sm:p-3 rounded-full hover:bg-yellow-300 hover:text-black transition z-20 bg-white/10"
-          aria-label="Previous slide"
+          className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-yellow-300 hover:text-black transition-all duration-300 z-20"
         >
           <FaChevronLeft />
         </button>
 
-        {/* Images */}
-        <div className="flex overflow-hidden w-full max-w-[1200px]">
+        {/* Slides */}
+        <div className="flex overflow-hidden w-full max-w-6xl gap-4 transition-transform duration-700 ease-in-out">
           {getVisibleItems().map((item, idx) => (
             <div
               key={idx}
-              className="flex-shrink-0 w-full sm:w-1/3 h-[50vh] sm:h-[70vh] overflow-hidden"
+              className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 h-[65vh] sm:h-[75vh] overflow-hidden rounded-xl shadow-lg cursor-pointer hover:scale-105 transition-transform duration-500"
+              onClick={() => navigate(item.link)}
             >
               <img
                 src={item.image}
                 alt={`slide-${idx}`}
-                className="w-full h-full object-cover cursor-pointer"
-                onClick={() => navigate(item.link)}
+                className="w-full h-full object-cover"
                 onError={handleImageError}
               />
             </div>
@@ -89,15 +102,14 @@ const HomeSliderCard = () => {
         {/* Right Arrow */}
         <button
           onClick={next}
-          className="absolute right-2 sm:right-6 top-1/2 transform -translate-y-1/2 text-white p-2 sm:p-3 rounded-full hover:bg-yellow-300 hover:text-black transition z-20 bg-white/10"
-          aria-label="Next slide"
+          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-yellow-300 hover:text-black transition-all duration-300 z-20"
         >
           <FaChevronRight />
         </button>
       </div>
 
       {/* Dots */}
-      <div className="absolute bottom-1 w-full flex justify-center gap-2 z-20">
+      <div className="mt-6 flex justify-center gap-2">
         {[...Array(maxIndex + 1)].map((_, idx) => (
           <span
             key={idx}

@@ -1,40 +1,41 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 
 const FirstSection = () => {
   return (
-    <section className="relative bg-yellow-400 bg-gradient-to-br from-red-600 via-red-600 to-red-500 py-32 px-6 md:px-14 text-red-700 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-[#b91c1c] via-[#dc2626] to-[#ef4444] py-28 px-6 md:px-16 text-white overflow-hidden">
 
-      {/* Watermark background */}
-      <div className="absolute inset-0 opacity-10 bg-[url('/assets/images/pattern.png')] bg-repeat z-0"></div>
+      {/* Subtle Pattern Overlay */}
+      <div className="absolute inset-0 opacity-10 bg-[url('/assets/images/pattern.png')] bg-repeat z-0" />
 
-      <div className="relative z-10 max-w-9xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
-        
+      <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
+
         {/* Text Content */}
         <motion.div
-          className="md:w-1/2 text-center md:text-left"
-          initial={{ x: -100, opacity: 0 }}
+          className="md:w-1/2 text-center md:text-left space-y-6"
+          initial={{ x: -60, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <h3 className="text-3xl md:text-5xl w-11/12 font-extrabold mb-6 text-yellow-400">
-           The Flame'n Bun App
-          </h3>
-          <p className="text-xl leading-relaxed mb-4 text-white">
-            Order ahead all your favourites directly from your local Flame'n Bun store and be in with a chance of winning huge prizes and taking advantage of our exclusive app customer offers.
+          <h2 className="text-4xl md:text-5xl font-extrabold text-yellow-400 leading-snug">
+            The Flame'n Bun App
+          </h2>
+          <p className="text-lg md:text-xl text-white/90">
+            Order your favourites ahead of time and win big with exclusive in-app offers. Convenient, fast, and full of flavor.
           </p>
-          <p className="font-bold text-lg text-white mb-6">
+          <p className="font-semibold text-white text-base">
             Download now on iOS or Android.
           </p>
 
-          {/* App Store Buttons in Row */}
+          {/* App Store Buttons */}
           <div className="flex items-center gap-4 justify-center md:justify-start">
             <a href="#">
               <img
                 src="/assets/images/home/app.svg"
                 alt="Download on the App Store"
-                className="h-8 object-contain"
+                className="h-10 object-contain"
               />
             </a>
             <a href="#">
@@ -49,34 +50,21 @@ const FirstSection = () => {
 
         {/* App Image */}
         <motion.div
-          className="w-full md:w-1/2 flex justify-center md:justify-end"
-          initial={{ x: 100, opacity: 0 }}
+          className="md:w-1/2 flex justify-center md:justify-end"
+          initial={{ x: 60, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <img
             src="/assets/images/app.png"
-            alt="app mobile"
-            className="max-w-lg h-auto object-contain"
+            alt="Flame'n Bun App"
+            className="mx-auto max-w-md md:max-w-lg "
           />
         </motion.div>
       </div>
 
-      {/* Scroll Button */}
-      <div className="absolute bottom-6 right-6 z-10">
-        <button className="bg-orange-900 rounded-xl p-3 shadow-md hover:scale-110 transition-transform duration-300">
-          <svg
-            className="w-5 h-5 text-white"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-          >
-            <path d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
-      </div>
+     
     </section>
   );
 };
